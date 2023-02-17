@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: [
     "./_includes/**/*.html",
@@ -13,13 +15,16 @@ module.exports = {
           100: "#DDEFFC",
           200: "#B9DFF9",
           300: "#83C6F5",
-          400: "#22d3ee",
+          400: "#59A5DA",
           500: "#3E8ABF",
           600: "#236FA4",
           700: "#0F5B90",
           800: "#045085",
           900: "#004677",
         },
+      },
+      fontFamily: {
+        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
       },
     },
   },

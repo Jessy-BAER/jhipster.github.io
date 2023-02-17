@@ -6,3 +6,38 @@
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
+
+@layer components {
+  .MainMenuItem {
+    position: relative;
+  }
+
+  .MainMenuItem:hover::after {
+    opacity: 1;
+    width: 2rem;
+    color: theme("colors.white");
+  }
+
+  .MainMenuItem::after {
+    content: "";
+    opacity: 0;
+    position: absolute;
+    bottom: 0.2em;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.2s ease 0s;
+    width: 0;
+    height: 2px;
+    border-radius: theme("borderRadius.full");
+    background-color: currentColor;
+  }
+
+  /* When item match with current page */
+  .MainMenuItem[aria-current]:not([aria-current="false"]) {
+    color: theme("colors.brand.400");
+  }
+  .MainMenuItem[aria-current]:not([aria-current="false"])::after {
+    opacity: 1;
+    width: 2rem;
+  }
+}
