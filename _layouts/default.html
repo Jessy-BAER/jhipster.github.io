@@ -42,6 +42,7 @@
 
     <!-- Font -->
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
     <!-- Favicon with QHD -->
     <link
       rel="icon"
@@ -67,16 +68,40 @@
       href="/images/logo/favicon-16x16.ico"
       sizes="16x16"
     />
+
+    <script>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
   </head>
 
-  <body>
+  <body class="h-screen">
     <!-- Header -->
     {% include header.html %}
-    <div class="bg-gray-900 shadow mx-auto h-screen">{{ content }}</div>
+    <div class="bg-gray-50 dark:bg-gray-900 mx-auto content-area">
+      {{ content }}
+    </div>
     <!-- Footer -->
     {% include footer.html %}
 
     <!-- Javascript Libs -->
+    <script
+      src="https://kit.fontawesome.com/30a6a6999e.js"
+      crossorigin="anonymous"
+    ></script>
     <!-- <script src="//unpkg.com/alpinejs" defer></script> -->
 
     <script type="text/javascript" src="{{ site.url }}/lib/js/ace.js"></script>

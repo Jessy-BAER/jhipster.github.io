@@ -1,0 +1,8 @@
+[
+    { "link": "/docs", "pageId": "docs", "content": "Docs" },
+    { "link": "/docs", "pageId": "marketplace", "content": "Marketplace" },
+    { "link": "/docs", "pageId": "jdl_studio", "content": "JDL Studio" },
+    { "link": "/docs", "pageId": "jhipster_online", "content": "Jhipster Online" },
+    { "link": "/team", "pageId": "team", "content": "Team" },
+    { "link": "/docs", "pageId": "english", "content": "English <i class=\"fa fa-language\" ></i>" }
+]

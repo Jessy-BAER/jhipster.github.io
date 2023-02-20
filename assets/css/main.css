@@ -7,12 +7,18 @@
 
 @import "tailwindcss/utilities";
 
+@layer utilities {
+  .content-area {
+    min-height: calc(100vh - theme(spacing.32));
+  }
+}
+
 @layer components {
   .MainMenuItem {
     position: relative;
   }
 
-  .MainMenuItem:hover::after {
+  .MainMenuItem:hover:not([aria-current="page"])::after {
     opacity: 1;
     width: 2rem;
     color: theme("colors.white");

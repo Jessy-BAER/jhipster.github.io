@@ -8,29 +8,37 @@ sitemap:
   lastmod: 2016-05-25T00:00:00-00:00
 ---
 
-<header class="bg-gray-900">
-  <div class="mx-auto max-w-7xl py-20 px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between">
-      <div class="flex-1">
+<header class="bg-gray-50 dark:bg-gray-900">
+  <!-- TODO: add utility classes for container -->
+  <div
+    class="mx-auto max-w-6xl py-10 md:py-18 lg:py-20 px-3 md:px-18 xl:px-20 text-center md:text-left"
+  >
+    <div
+      class="flex items-center justify-between flex-col-reverse md:flex-row gap-5 md:gap-0"
+    >
+      <div class="flex-1 flex flex-col gap-5">
         <h1
-          class="text-6xl leading-none font-extrabold tracking-tight text-white"
+          class="text-6xl leading-none font-extrabold tracking-tight text-gray-800 dark:text-white"
         >
-          Greetings, Java <span class="text-brand-400">Hipster</span>!
+          Greetings, Java
+          <span class="text-brand-500 dark:text-brand-400">Hipster</span>!
         </h1>
-        <p class="text-brand-100 text-xl leading-7 font-normal">
+        <p
+          class="text-gray-600 dark:text-brand-100 text-xl leading-7 font-normal"
+        >
           JHipster is a development platform to quickly generate, develop &
           deploy modern web applications & microservice architectures.
         </p>
-        <div>
+        <div class="flex flex-col md:flex-row gap-5">
           <button
             type="submit"
-            class="inline-flex justify-center rounded-md border border-transparent bg-brand-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
+            class="inline-flex justify-center rounded-md border border-transparent bg-brand-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-brand-700"
           >
             Get Started
           </button>
           <button
             type="submit"
-            class="inline-flex justify-center rounded-md border border-transparent bg-brand-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
+            class="inline-flex justify-center rounded-md border border-transparent bg-brand-50 py-2 px-4 text-sm font-medium text-brand-600 shadow-sm hover:bg-brand-700"
           >
             Get Started
           </button>
@@ -43,16 +51,23 @@ sitemap:
         />
       </div>
     </div>
+    <div
+      class="flex items-center justify-start md:justify-center gap-10 pt-10 overflow-x-auto -mr-3"
+    >
+      {% for company_using_jhipster in site.data.companies_using_jhipster.users
+      limit: 8%}
+      <img
+        class="h-20 w-20 rounded-full object-contain bg-white border border-solid border-gray-200"
+        src="/companies-using-jhipster/images/{{company_using_jhipster.logo}}"
+      />
+      {% endfor %}
+    </div>
   </div>
 </header>
 <main class="bg-brand-900">
   <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
     <!-- Replace with your content -->
-    <div class="px-4 py-6 sm:px-0">
-      <div class="h-96"></div>
-      <div class="h-96"></div>
-      <div class="h-96"></div>
-    </div>
+    <div class="px-4 py-6 sm:px-0"></div>
     <!-- /End replace -->
   </div>
 </main>

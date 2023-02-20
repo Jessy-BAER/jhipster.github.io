@@ -1,4 +1,4 @@
-<nav class="sticky top-0 z-50 bg-gray-900">
+<nav class="sticky top-0 z-50 bg-white dark:bg-gray-900" x-data="{ open: false }">
   <div class="mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 flex-1 items-center justify-between">
       <div class="flex-shrink-0">
@@ -7,89 +7,74 @@
           <img
             class="h-8 w-100"
             src="{{ site.url }}/assets/images/logo/logo-jhipster.svg"
-            alt="Jhipster logo"
-          />
+            alt="Jhipster logo" />
         </a>
       </div>
 
       <div class="-mr-2 hidden md:flex">
         <div class="ml-10 flex items-baseline space-x-2">
-          <a
-           href="{{ site.url }}/docs"
-          class="MainMenuItem text-white px-3 py-2 rounded-md text-sm font-medium"
-          {% if page.id == "docs" %}
-            aria-current="page"
-          {% endif %}
-            >Docs</a
-          >
-          <a
-            href="#"
-            class="MainMenuItem text-white px-3 py-2 rounded-md text-sm font-medium"
-            >Marketplace
-          </a>
-          <a
-            href="https://start.jhipster.tech/jdl-studio/"
-            target="_blank"
-            class="MainMenuItem text-white px-3 py-2 rounded-md text-sm font-medium"
-            >JDL Studio</a
-          >
-          <a
-            href="#"
-            class="MainMenuItem text-white px-3 py-2 rounded-md text-sm font-medium"
-            >Jhipster Online</a
-          >
-          <a
-            href="{{ site.url }}/team"
-            class="MainMenuItem text-white px-3 py-2 rounded-md text-sm font-medium"
-            {% if page.id == "team" %}
+          {% for header_item in site.data.header_items %}
+            <a
+              href="{{ site.url }}{{header_item.link}}"
+              class="MainMenuItem text-gray-600 dark:text-white px-3 py-2 rounded-md text-sm font-medium"
+              {% if page.id == header_item.pageId %}
               aria-current="page"
-            {% endif %}
-            >Team</a
-          >
-          <a
-            href="{{ site.url }}/cn{{page.url}}"
-            class="MainMenuItem text-white px-3 py-2 rounded-md text-sm font-medium"
-            >English <i class="fa fa-language" ></i></a
-          >
+              {% endif %}>{{ header_item.content }}
+            </a>
+          {% endfor %}
           <div>
             <a
-            href="https://github.com/jhipster/generator-jhipster"
-            target="_blank"
-            rel="noopener"
-            class="text-white px-2 py-2 "
-            ><i class="fa fa-github"></i></a
-            >
+              href="https://github.com/jhipster/generator-jhipster"
+              target="_blank"
+              rel="noopener"
+              class="text-gray-600 dark:text-white px-2 py-2 ">
+              <i class="fa fa-github"></i>
+            </a>
             <a
-            href="https://www.youtube.com/c/JHipsterDevelopersAssociation"
-            target="_blank"
-            rel="noopener"
-            class="text-white px-2 py-2"
-            ><i class="fa fa-youtube"></i></a
-            >
-            <a
-            rel="noopener"
-            class="text-white px-2 py-2"
-            ><i class="fa fa-search"></i></a
-            >
+              href="https://www.youtube.com/c/JHipsterDevelopersAssociation"
+              target="_blank"
+              rel="noopener"
+              class="text-gray-600 dark:text-white px-2 py-2">
+              <i class="fa fa-youtube"></i>
+            </a>
+            <a rel="noopener" class="text-gray-600 dark:text-white px-2 py-2">
+              <i class="fa fa-search"></i>
+            </a>
+          </div>
+          <div class="flex">
+            <button
+              x-data="{
+                  toggle: () => {
+                      if (localStorage.theme === 'dark') {
+                          localStorage.theme = 'light';
+                          document.documentElement.classList.remove('dark');
+                      } else {
+                          localStorage.theme = 'dark';
+                          document.documentElement.classList.add('dark');
+                      }
+                  },
+              }"
+              @click="toggle"
+              class="inline-flex justify-center rounded-md border border-transparent bg-brand-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
+              light/dark
+            </button>
           </div>
           <div>
-            <button
-              type="submit"
-              class="inline-flex justify-center rounded-md border border-transparent bg-brand-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
-            >
+            <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-brand-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
               Get Started
             </button>
           </div>
         </div>
       </div>
       <!-- Mobile menu button -->
-      <div class="-mr-2 flex md:hidden">
+      <div class="-mr-2 flex md:hidden" >
         <button
           type="button"
           class="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
           aria-controls="mobile-menu"
           aria-expanded="false"
-        >
+          @click="open = !open"
+           >
           <span class="sr-only">Open main menu</span>
           <!-- Menu open: "hidden", Menu closed: "block" -->
           <svg
@@ -98,13 +83,11 @@
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            aria-hidden="true"
-          >
+            aria-hidden="true">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
           <!-- Menu open: "block", Menu closed: "hidden" -->
           <svg
@@ -113,13 +96,11 @@
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            aria-hidden="true"
-          >
+            aria-hidden="true">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
+              d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
@@ -127,65 +108,43 @@
   </div>
 
   <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="md:hidden" id="mobile-menu">
+  <div class="md:hidden" id="mobile-menu" x-show="open">
     <div class="space-y-1 px-2 pt-1 pb-2 sm:px-3">
-      <a
-        href="#"
-        class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-        aria-current="page"
-        >Docs</a
-      >
-      <a
-        href="#"
-        class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-        >Marketplace</a
-      >
-      <a
-        href="https://start.jhipster.tech/jdl-studio/"
-        target="_blank"
-        class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-        >JDL Studio</a
-      >
-      <a
-        href="#"
-        class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-        >Jhipster Online</a
-      >
-      <a
-        href="#"
-        class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-        >Team</a
-      >
-      <a
-        href="{{ site.url }}/cn{{page.url}}"
-        class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-        >English</a
-      >
-      <div class="flex">
+
+      {% for header_item in site.data.header_items %}
+        <a
+          href="{{ site.url }}{{header_item.link}}"
+          class="MainMenuItem text-gray-600 dark:text-white px-3 py-2 rounded-md text-base font-medium block"
+          {% if page.id == header_item.pageId %}
+          aria-current="page"
+          {% endif %}>{{ header_item.content }}
+        </a>
+      {% endfor %}
+      <div>
         <a
           href="https://github.com/jhipster/generator-jhipster"
           target="_blank"
           rel="noopener"
-          class="bg-gray-900 text-white px-3 py-2 rounded-md text-base font-medium"
-          >g</a
-        >
+          class="text-gray-600 dark:text-white px-2 py-2 ">
+          <i class="fa fa-github"></i>
+        </a>
         <a
           href="https://www.youtube.com/c/JHipsterDevelopersAssociation"
           target="_blank"
           rel="noopener"
-          class="bg-gray-900 text-white px-3 py-2 rounded-md text-base font-medium"
-          >y</a
-        >
+          class="text-gray-600 dark:text-white px-2 py-2">
+          <i class="fa fa-youtube"></i>
+        </a>
+        <a rel="noopener" class="text-gray-600 dark:text-white px-2 py-2">
+          <i class="fa fa-search"></i>
+        </a>
       </div>
       <div class="flex">
-        <button
-          type="submit"
-          class="flex-1 justify-center rounded-md border border-transparent bg-brand-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
-        >
+        <button type="submit" class="flex-1 justify-center rounded-md border border-transparent bg-brand-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
           Get Started
         </button>
       </div>
     </div>
   </div>
-  <hr class="border-gray-700" />
+  <hr class="border-gray-100 dark:border-gray-700" />
 </nav>
