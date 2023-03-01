@@ -5,8 +5,14 @@
         <!-- Logo -->
         <a href="{{ site.url }}/">
           <img
+            x-show='darkMode'
             class="h-8 w-100"
             src="{{ site.url }}/assets/images/logo/logo-jhipster.svg"
+            alt="Jhipster logo" />
+          <img
+            x-show='!darkMode'
+            class="h-8 w-100"
+            src="{{ site.url }}/assets/images/logo/logo-jhipster-reversed.svg"
             alt="Jhipster logo" />
         </a>
       </div>
@@ -43,20 +49,10 @@
           </div>
           <div class="flex">
             <button
-              x-data="{
-                  toggle: () => {
-                      if (localStorage.theme === 'dark') {
-                          localStorage.theme = 'light';
-                          document.documentElement.classList.remove('dark');
-                      } else {
-                          localStorage.theme = 'dark';
-                          document.documentElement.classList.add('dark');
-                      }
-                  },
-              }"
-              @click="toggle"
+              @click="darkMode = !darkMode"
               class="inline-flex justify-center rounded-md border border-transparent bg-brand-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
-              light/dark
+              <i x-show="darkMode" class="fa fa-sun"></i>
+              <i x-show="!darkMode" class="fa fa-moon"></i>
             </button>
           </div>
           <div>

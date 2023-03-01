@@ -1,5 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+  lang="en"
+  x-data="{
+      darkMode: localStorage.getItem('dark') === 'true' 
+  }"
+  x-init="$watch('darkMode', val => localStorage.setItem('dark', val))"
+  x-bind:class="{ 'dark': darkMode }"
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -68,19 +75,6 @@
       href="/images/logo/favicon-16x16.ico"
       sizes="16x16"
     />
-
-    <script>
-      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    </script>
 
     <script
       defer
