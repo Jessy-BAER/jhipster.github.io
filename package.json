@@ -1,16 +1,15 @@
 {
   "name": "jhipster-public-wesite",
   "devDependencies": {
-    "browser-sync": "2.27.11",
-    "gulp": "4.0.2",
-    "gulp-imagemin": "8.0.0",
-    "gulp-sass": "5.0.0",
-    "sass": "1.54.4"
+    "autoprefixer": "10.4.13",
+    "cssnano": "5.1.15",
+    "postcss": "8.4.21",
+    "postcss-import": "15.1.0",
+    "tailwindcss": "3.2.7"
   },
   "private": true,
   "scripts": {
-    "start": "bundle exec jekyll serve",
-    "sass": "gulp sass",
-    "images": "gulp images"
+    "dev": "bundle exec jekyll serve --livereload",
+    "start": "bundle exec jekyll serve"
   }
 }

@@ -1,0 +1,28 @@
+{
+  "leads": [
+    {
+      "name": "Julien Dubois",
+      "github_img": "316835?v=3",
+      "title": "Project lead",
+      "twitter": "juliendubois"
+    },
+    {
+      "name": "Deepu K Sasidharan",
+      "github_img": "1107223?v=3",
+      "title": "Project co-lead",
+      "twitter": "deepu105"
+    },
+    {
+      "name": "Pascal Grimaud",
+      "github_img": "9156882?v=3",
+      "title": "Project co-lead",
+      "twitter": "pascalgrimaud"
+    },
+    {
+      "name": "Daniel Franco",
+      "github_img": "3706415?v=3",
+      "title": "Project co-lead",
+      "twitter": "dandrfranco"
+    }
+  ]
+}

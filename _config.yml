@@ -1,4 +1,4 @@
-safe: true
+# safe: true # need to disable this to add tailwind, see with someone why
 markdown: kramdown
 exclude: [node_modules, bower_components, vendor]
 url: https://www.jhipster.tech
@@ -8,12 +8,16 @@ kramdown:
 plugins_dir:
   - jekyll-redirect-from
   - jemoji
+plugins:
+  - jekyll-postcss
+postcss:
+  cache: false
 whitelist:
   - jekyll-redirect-from
   - jemoji
-defaults:
-  -
-    scope:
-      path: "" # an empty string here means all files in the project
-    values:
-      layout: "default"
+  # defaults: # see first comment
+  # -
+  #   scope:
+  #     path: "" # an empty string here means all files in the project
+  #   values:
+  #     layout: "default"
